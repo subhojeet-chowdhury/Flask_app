@@ -2,19 +2,38 @@
 <h1 class="mt-3 mb-3">
   Dashboard <small class=" "> Welcome {{session.username}}</small>
 </h1>
-<a class="btn btn-success mb-5" href="/add_record"> Add Record</a>
+<a class="btn btn-success mb-3" href="/add_record"> Add Record</a>
 <hr />
-<div class="p-5 mb-4 bg-dark text-light rounded-3">
-  <div class="container-fluid py-5">
-    {% for record in records %}
-    <h1>{{record.name}}</h1>
-    <h2>{{record.email}}</h2>
-    <h3>{{record.number}}</h3>
-    <h2>{{record.address}}</h2>
-    <p class="col-md-8 fs-4">{{record.about}}</p>
-    <button class="btn btn-primary btn-lg" type="button">Example button</button>
-    {% endfor %}
+{% for record in records %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-1">
+    <h1 class=" ">{{record.name}}</h1>
+    <p class="card-text my-4">{{record.about | safe}}</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{record.email}}</li>
+      <li class="list-group-item">{{record.number}}</li>
+      <li class="list-group-item">{{record.address}}</li>
+    </ul>
+
+    <div class="d-flex gap-2">
+      <div>
+        <a
+          href="edit_record/{{record.name}}"
+          class="btn btn-primary btn-md mt-3"
+          >Edit</a
+        >
+      </div>
+      <div>
+        <form
+          action="{{url_for('delete_record', name=record.name)}}"
+          method="post"
+          class="mt-2"
+        >
+          <input type="hidden" name="_method" value="DELETE" />
+          <input type="submit" value="Delete" class="btn btn-danger mt-2" />
+        </form>
+      </div>
+    </div>
   </div>
 </div>
-
-{% endblock %}
+{% endfor %} {% endblock %}

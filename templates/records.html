@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% block body %}
+
+<hr />
+{% for record in records %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-1">
+    <h1 class=" ">{{record.name}}</h1>
+    <p class="card-text my-4">{{record.about | safe}}</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{record.email}}</li>
+      <li class="list-group-item">{{record.number}}</li>
+      <li class="list-group-item">{{record.address}}</li>
+    </ul>
+  </div>
+</div>
+<hr />
+{% endfor %} {% endblock %}

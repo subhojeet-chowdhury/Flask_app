@@ -1,6 +1,6 @@
 # FlaskApp
 
-Simple application with authentication functionality using the Python Flask micro-framework
+Flask Application with CRUD functionality and interactive interface built with flask and sql
 
 ## Installation
 
