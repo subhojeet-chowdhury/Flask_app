@@ -1,0 +1,24 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+    >
+      <ul
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+      >
+        <li>
+          <a href="/" class="nav-link px-2 text-white fs-2">MyFlaskApp</a>
+        </li>
+      </ul>
+
+      <div class="text-end">
+        {% if session.logged_in %}
+        <a href="/signout" class="btn btn-warning">Sign out</a>
+        {% else %}
+        <a href="/signin" class="btn btn-outline-light me-2"> Sign in </a>
+        <a href="/signup" class="btn btn-warning">Sign up</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
